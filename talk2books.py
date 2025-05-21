@@ -9,7 +9,7 @@ import textwrap  # Add this import at the top of your file
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__, static_folder='../talk-to-books-frontend/build', static_url_path='')
+app = Flask(__name__, static_folder='talk-to-books-frontend/build', static_url_path='')
 CORS(app)
 
 # Configure the generative AI with the API key
