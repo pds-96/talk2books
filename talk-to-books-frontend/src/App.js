@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 
+// Custom style for the sidebar component
+Sidebar.defaultProps = {
+    className: "w-64 border-r border-gray-200"
+};
+
 function App() {
     const [query, setQuery] = useState("");
     const [preference, setPreference] = useState("both");
@@ -108,7 +113,7 @@ function App() {
                             </button>
                         </form>
                         {response && (
-                            <div className="mt-4 p-3 bg-gray-50 rounded-md shadow-inner text-gray-700">
+                            <div className="mt-4 p-3 bg-gray-50 rounded-md shadow-inner text-gray-700 max-w-4xl mx-auto">
                                 {response.books?.length > 0 && (
                                     <>
                                         <strong>Response from Books:</strong>
