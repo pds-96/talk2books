@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 
-// Custom style for the sidebar component
-Sidebar.defaultProps = {
-    className: "w-64 border-r border-gray-200"
-};
-
 function App() {
     const [query, setQuery] = useState("");
     const [preference, setPreference] = useState("both");
@@ -42,21 +37,21 @@ function App() {
     };
 
     return (
-        <div className="flex h-screen">
+        <div className="flex min-h-screen bg-blue-50">
             {/* Sidebar */}
             <Sidebar
                 history={searchHistory}
                 onSelect={handleSelectHistory}
                 onClearHistory={handleClearHistory}
+                className="w-64 min-h-screen bg-white border-r border-gray-200 flex-shrink-0"
             />
-
             {/* Main Content */}
-            <div className="flex-1 p-6 bg-gray-100 overflow-y-auto">
-                <div className="space-y-6">
+            <div className="flex-1 flex flex-col items-center justify-center p-6">
+                <div className="w-full max-w-2xl space-y-6">
                     {/* Description Section */}
                     <div className="bg-white rounded-lg shadow-md p-6">
-                        <h1 className="text-4xl font-bold text-indigo-700 mb-4">Talk to Books</h1>
-                        <p className="text-lg text-gray-600 mb-4">
+                        <h1 className="text-4xl font-bold text-indigo-700 mb-4 text-center">Talk to Books</h1>
+                        <p className="text-lg text-gray-600 mb-4 text-center">
                             Welcome to Talk to Books! This interactive platform combines the power of AI and real book content to provide you with comprehensive answers to your questions.
                         </p>
                         <div className="space-y-3">
@@ -79,7 +74,6 @@ function App() {
                             </p>
                         </div>
                     </div>
-
                     {/* Form Section */}
                     <div className="bg-white rounded-lg shadow-md p-6">
                         <form onSubmit={handleSubmit} className="space-y-4">
