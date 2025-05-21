@@ -10,7 +10,7 @@ import textwrap  # Add this import at the top of your file
 load_dotenv()
 
 app = Flask(__name__, static_folder='talk-to-books-frontend/build', static_url_path='')
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # Configure the generative AI with the API key
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
@@ -124,3 +124,8 @@ def serve(path):
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
+
+# Add a health check endpoint
+@app.route('/health')
+def health_check():
+    return jsonify({"status": "ok"})
